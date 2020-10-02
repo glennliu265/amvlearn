@@ -237,7 +237,7 @@ param2 = wd.copy()
 # Set input data options
 ens_sel = 20
 time_lag = 0
-month_sel = 7
+month_sel = 0
 num_input_time_steps = 1
 testsize = 20
 trainsize = 60
@@ -399,10 +399,11 @@ print("Saved data to %s%s"%(outpath,outname))
 # -----------------------------------------
 import matplotlib.patheffects as path_effects
 figpath = outpath
-gsize = data.shape[0]
+
 
 # Plot the RMSE grid
 data = rmse_grid.copy()
+gsize = data.shape[0]
 cmap = plt.get_cmap("pink",20)
 cmap.set_bad(np.array([0,255,0])/255)
 fig,ax = plt.subplots(1,1,figsize=(8,8))
@@ -435,6 +436,7 @@ for i in range(np1):
         
         #text.set_path_effects([path_effects.Stroke(linewidth=0.25,foreground='k')])
 plt.savefig("%sRMSE_%s.png"%(outpath,expname),dpi=200)
+plt.show()
 
 # Plot the Correlation grid
 data = corr_grid.copy()
@@ -470,4 +472,4 @@ for i in range(np1):
         
         #text.set_path_effects([path_effects.Stroke(linewidth=0.25,foreground='k')])
 plt.savefig("%sCorr_%s.png"% (outpath,expname),dpi=200)
-
+plt.show()
